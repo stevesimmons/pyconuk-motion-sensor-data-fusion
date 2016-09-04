@@ -16,9 +16,32 @@ Note the while the microbit hardware supports Bluetooth Low Energy (BLE), we unf
 To run this example:
 
 1. Use the `mu` editor or `uflash` utility to flash the `microbit-logger.py` code onto the microbit(s).
-2. Start the microbit(s) and put them into the correct modes: `'log'` if you have one, and `'tx'` and `'rx'` if you have two. Button A cycles through the modes `'idle'`/`'log'`/`'tx'`/`'rx'` and back to `'idle'` again. Their screen displays are blank, `Image.ARROW_S`, `Image.ARROW_E`, and `Image.HEART` respectively. These pulsate in brightness as data is received, giving a clear indication that everything is working ok.
-3. Run `usb-receiver.py` on the host computer to receive the sensor data via USB. 
+  
+  ```$ uflash microbit-logger.py```
+  
+  If you have multiple microbits connected, you will need to specify which one to flash:
+  
+  ```$ uflash microbit-logger.py /media/stephen/MICROBIT```
+  
+2. Start the microbit(s) and put them into the correct modes: `'log'` if you have one microbit, and `'tx'` and `'rx'` if you have two. 
 
-## Example 2 - Streaming mobile phone sensor data
+  Button A cycles through the modes `'idle'`/`'log'`/`'tx'`/`'rx'` and back to `'idle'` again. 
+  
+  The LEDs show which mode is active: `Image.ARROW_S` for `'log'` (think saving results straight down), `Image.ARROW_E` for `'tx'` (sending data somewhere else), and `Image.HEART` for '`rx`' (a heart beat as data gets relayed). These pulsate in brightness as data is received, giving a clear indication that everything is working ok.
+  
+  The microbit may display a message that its compass needs to be calibrated, followed by a single dot on the LEDs. Rotate the microbit until all directions. Calibration is complete when the LEDs are lit in a full circle.
+   
+3. Run `usb-receiver.py` on the host computer to receive the sensor data via USB and print on the console. From here it can be redirected to a file.
+  
+  ```$ python usb-receiver.py``` 
+  
+  ```$ python usb-receiver.py > data.csv```
+
+4. Analyse the data by loading it into a spreadsheet like Excel or a Python program. A Jupyter notebook plus pandas makes this easy.
+
+    ```(TODO: Add example Jupyter notebook)```
+    
+  
+## Example 2 - Mobile phone sensor data
 
 (to be added)
