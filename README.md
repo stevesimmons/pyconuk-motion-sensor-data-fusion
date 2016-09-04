@@ -17,7 +17,7 @@ To run this example:
 
 1. Use the `mu` editor or `uflash` utility to flash the `microbit-logger.py` code onto the microbit(s).
 2. Start the microbit(s) and put them into the correct modes: `'log'` if you have one, and `'tx'` and `'rx'` if you have two. Button A cycles through the modes `'idle'`/`'log'`/`'tx'`/`'rx'` and back to `'idle'` again. Their screen displays are blank, `Image.ARROW_S`, `Image.ARROW_E`, and `Image.HEART` respectively. These pulsate in brightness as data is received, giving a clear indication that everything is working ok.
-3. Run `usb_receiver.py` on the host computer to receive the sensor data via USB. 
+3. Run `usb-receiver.py` on the host computer to receive the sensor data via USB. 
 
 ## Example 2 - Streaming mobile phone sensor data
 
