@@ -1,10 +1,10 @@
 """
 usb-receiver.py
 
-This is sample code from Stephen Simmons' PyCon UK 2016 talk 
+This is sample code from Stephen Simmons' PyCon UK 2016 talk
 "Where am? What am I doing? Motion Sensor Data Fusion with Python".
 
-It receives serial data from a microbit connected to a USB port and 
+It receives serial data from a microbit connected to a USB port and
 prints it to stdout. From here it can be redirected to a text file, etc.
 
 Usage:              [so far, only tested under Linux]
@@ -19,27 +19,31 @@ or redirecting to a file:
 
 The accompanying script microbit-logger.py runs on the microbit.
 
-Stephen Simmons    https://github.com/stevesimmons/pyconuk-motion-sensor-data-fusion
+Stephen Simmons - 5 Sep 2016
+https://github.com/stevesimmons/pyconuk-motion-sensor-data-fusion
 """
 
 import serial
 import serial.tools.list_ports
 import sys
 
+
 def main():
     port = find_microbit()
     print_from_usb(port)
 
+
 def find_microbit(serial_number=None):
-    """Return name of the serial port of the first matching micro:bit, otherwise None."""
+    "Name of the first matching micro:bit's serial port, otherwise None."
     for port in serial.tools.list_ports.comports():
         if port.product == 'MBED CMSIS-DAP':
-            if serial_number is None or serial_number == port.serial_number: 
+            if serial_number is None or serial_number == port.serial_number:
                 return port.device
     return None
 
+
 def print_from_usb(port, out=sys.stdout):
-    """Write serial data from USB port to a file, by default sys.stdout."""
+    "Write serial data from USB port to a file, by default sys.stdout."
     ser = serial.Serial(port, baudrate=115200)
     try:
         while True:
@@ -49,6 +53,7 @@ def print_from_usb(port, out=sys.stdout):
         pass
     finally:
         ser.close()
-            
+
+
 if __name__ == '__main__':
     main()
